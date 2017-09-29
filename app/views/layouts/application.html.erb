@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <div class="header">
+      <div class="container">
+        <h1>Books On Rails</h1>
+      </div>
+    </div>
+
+    <div class="books">
+      <div class="container">
+        <div class="cards row">
+          <% @books.each do |t| %>
+            <div class="card col-s-4">
+              <%= image_tag t.image %>
+              <h2><%= t.title %></h2>
+              <%= link_to 'Learn More' book_path(t) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
